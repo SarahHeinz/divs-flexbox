@@ -38,7 +38,7 @@ html {
  * A better looking default horizontal rule
  */
 
-hr {
+ hr {
     display: block;
     height: 1px;
     border: 0;
@@ -99,17 +99,35 @@ textarea {
 html {
   background-color: #fff;
   height: 100%;
+  width: 100%;
+
+}
+header h1{
+font-family: 'Carter One', cursive;
+font-size: 3em;
 }
 
 body {
-  font-family: 'Source Sans Pro', sans-serif;
-  padding: 2em;
+  font-family: 'Oswald', sans-serif;
+  padding: 0em 2em;
   font-size: 1.25em;
-  height: 100%;
   background-color: #008AB8;
+  color: #590f3d;
+  display: flex;
+  justify-content: center;
 }
+main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #590f3d;
+  }
+  
+  main p {
+    font-size: 1.35em;}
 
-.wrapper {
+
+.flex-container {
   /*add display:flex and set justify-content to space-between*/
   font-weight: 700;
   display: flex;
@@ -118,32 +136,42 @@ body {
   flex-flow: row wrap;
 }
 
-.div-1, .div-2, .div-3 {
+.flex-items{
   /*give the divs a width of 30%, add display:flex, set justify-content and align-items to center*/
-  color: #f4c8e3;
-  line-height: 1.5em;
-  font-size: 1.3em;
+  color: #590f3d;
+width: 30%;
   background-color: #008AB8;
-  height: 300px;
-  width: 30%;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  line-height: 1.5em;
+  font-size: 1em;
+
 }
 
-.div-1, .div-2 {
-    border-right: 1px solid white;
-    padding-right: 30px;
-  }
 
 
-  .wrapper span {
-    font-family: 'Tilt Warp', cursive;
-    font-size: 1.3em;
+
+  p span {
+    font-family: 'Carter One', cursive;
+    font-size: 1em;
     color: #590f3d;
 
   }
 
+  header, footer{
+    width: 100%;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    footer{
+        border-top: 1px solid #590f3d;
+    }
+
+    footer p{
+        padding: 30px 20px 0 0;
+    }
 /* ==========================================================================
    Helper classes
    ========================================================================== */
@@ -236,7 +264,36 @@ body {
    Inlined to avoid the additional HTTP request:
    http://www.phpied.com/delay-loading-your-print-css/
    ========================================================================== */
+   @media all and (max-width: 768px) {
+    body {
+      padding: 1em;
+    }
+}
+   
+    @media (min-width: 1200px) {
+        .flex-items {
+          flex-basis: 30%;
+          border-bottom: none;
+        }
+    
+        #div-2 p {
+          border-left: 1px solid #590f3d;
+          border-right: 1px solid #590f3e;
+          padding: 0 40px;
+        }
+    }
 
+    @media print,
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 1.25dppx),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   http://www.phpied.com/delay-loading-your-print-css/
+    
 @media print {
     *,
     *:before,
@@ -244,66 +301,68 @@ body {
         background: transparent !important;
         color: #000 !important; /* Black prints faster:
                                    http://www.sanbeiji.com/archives/953 */
-        box-shadow: none !important;
-        text-shadow: none !important;
-    }
-
-    a,
-    a:visited {
-        text-decoration: underline;
-    }
-
-    a[href]:after {
-        content: " (" attr(href) ")";
-    }
-
-    abbr[title]:after {
-        content: " (" attr(title) ")";
-    }
-
-    /*
-     * Don't show links that are fragment identifiers,
-     * or use the `javascript:` pseudo protocol
-     */
-
-    a[href^="#"]:after,
-    a[href^="javascript:"]:after {
-        content: "";
-    }
-
-    pre,
-    blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
-
-    /*
-     * Printing Tables:
-     * http://css-discuss.incutio.com/wiki/Printing_Tables
-     */
-
-    thead {
-        display: table-header-group;
-    }
-
-    tr,
-    img {
-        page-break-inside: avoid;
-    }
-
-    img {
-        max-width: 100% !important;
-    }
-
-    p,
-    h2,
-    h3 {
-        orphans: 3;
-        widows: 3;
-    }
-
-    h2,
-    h3 {
-        page-break-after: avoid;
-    }
+                                   box-shadow: none;
+                                   text-shadow: none;
+                               }
+                           
+                               a,
+                               a:visited {
+                                   text-decoration: underline;
+                               }
+                           
+                               a[href]:after {
+                                   content: " (" attr(href) ")";
+                               }
+                           
+                               abbr[title]:after {
+                                   content: " (" attr(title) ")";
+                               }
+                           
+                               /*
+                                * Don't show links that are fragment identifiers,
+                                * or use the `javascript:` pseudo protocol
+                                */
+                           
+                               a[href^="#"]:after,
+                               a[href^="javascript:"]:after {
+                                   content: "";
+                               }
+                           
+                               pre,
+                               blockquote {
+                                   border: 1px solid #999;
+                                   page-break-inside: avoid;
+                               }
+                           
+                               /*
+                                * Printing Tables:
+                                * http://css-discuss.incutio.com/wiki/Printing_Tables
+                                */
+                           
+                               thead {
+                                   display: table-header-group;
+                               }
+                           
+                               tr,
+                               img {
+                                   page-break-inside: avoid;
+                               }
+                           
+                               img {
+                                   max-width: 100% !important;
+                               }
+                           
+                               p,
+                               h2,
+                               h3 {
+                                   orphans: 3;
+                                   widows: 3;
+                               }
+                           
+                               h2,
+                               h3 {
+                                   page-break-after: avoid;
+                               }
+                           
 }
+    
